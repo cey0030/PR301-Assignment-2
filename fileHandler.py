@@ -36,7 +36,8 @@ class PrintClass:
         return result
 
     def add_relationships(self, class_item, result):
-        for list_item in self.get_relationship(self.get_class_name(class_item)):
+        for list_item in self.get_relationship(
+                self.get_class_name(class_item)):
             result += list_item
         return result
 
@@ -60,7 +61,8 @@ class PrintClass:
 
     def add_class_names(self, class_item):
         self.class_name_list.append(self.get_class_name(class_item))
-        result = "class " + self.get_class_name(class_item) + ":\n    def __init__(self"
+        result = "class " + \
+            self.get_class_name(class_item) + ":\n    def __init__(self"
         for listItem in self.get_attributes(class_item):
             result += ', ' + listItem
         result += '):\n'
