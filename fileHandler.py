@@ -16,8 +16,7 @@ class PrintClass:
 
         result = self.add_attributes(class_item, result)
 
-        for list_item in self.get_relationship(self.get_class_name(class_item)):
-            result += list_item
+        result = self.add_relationships(class_item, result)
 
         for listItem in self.get_methods(class_item):
             if Validator.validate_method_name(listItem):
@@ -26,6 +25,11 @@ class PrintClass:
                                               'mplete\n        pass\n'
             else:
                 result += "# method name is invalid\n"
+        return result
+
+    def add_relationships(self, class_item, result):
+        for list_item in self.get_relationship(self.get_class_name(class_item)):
+            result += list_item
         return result
 
     def add_attributes(self, class_item, result):
