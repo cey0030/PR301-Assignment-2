@@ -52,9 +52,12 @@ class PrintClass:
         for listItem in self.get_attributes(class_item):
             result += ', ' + listItem
         result += '):\n'
+        self.check_class_names(class_item)
+        return result
+
+    def check_class_names(self, class_item):
         if Validator.validate_class_name(self.get_class_name(class_item)):
             pass
-        return result
 
     def output_classes(self, file_dir):
         files = []
