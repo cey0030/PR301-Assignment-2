@@ -12,22 +12,18 @@ class PrintClass:
         self.class_name_list = self.fileProcessor.class_name_list
 
     def output_class(self, class_item):
-        class_name = self.get_class_name(class_item)
-        self.class_name_list.append(class_name)
-        attribute_list = self.get_attributes(class_item)
-        method_list = self.get_methods(class_item)
-        relationship_list = self.get_relationship(class_name)
-        result = "class " + class_name + ":\n    def __init__(self"
+        self.class_name_list.append(self.get_class_name(class_item))
+        result = "class " + self.get_class_name(class_item) + ":\n    def __init__(self"
 
-        for listItem in attribute_list:
+        for listItem in self.get_attributes(class_item):
             result += ', ' + listItem
 
         result += '):\n'
 
-        if Validator.validate_class_name(class_name):
+        if Validator.validate_class_name(self.get_class_name(class_item)):
             pass
 
-        for listItem in attribute_list:
+        for listItem in self.get_attributes(class_item):
             try:
                 if Validator.validate_attribute_name(listItem):
                     result += '        self.' + \
@@ -37,13 +33,13 @@ class PrintClass:
             except NameError as e:
                 print(e)
 
-        if len(attribute_list) == 0:
+        if len(self.get_attributes(class_item)) == 0:
             result += "        pass\n"
 
-        for list_item in relationship_list:
+        for list_item in self.get_relationship(self.get_class_name(class_item)):
             result += list_item
 
-        for listItem in method_list:
+        for listItem in self.get_methods(class_item):
             if Validator.validate_method_name(listItem):
                 result += '\n'
                 result += 'def ' + listItem + '(self):\n     # Todo: inco' \
