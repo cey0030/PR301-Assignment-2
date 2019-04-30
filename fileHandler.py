@@ -23,12 +23,16 @@ class PrintClass:
 
     def add_methods(self, class_item, result):
         for listItem in self.get_methods(class_item):
-            if Validator.validate_method_name(listItem):
-                result += '\n'
-                result += 'def ' + listItem + '(self):\n     # Todo: inco' \
-                                              'mplete\n        pass\n'
-            else:
-                result += "# method name is invalid\n"
+            result = self.check_methods(listItem, result)
+        return result
+
+    def check_methods(self, listItem, result):
+        if Validator.validate_method_name(listItem):
+            result += '\n'
+            result += 'def ' + listItem + '(self):\n     # Todo: inco' \
+                                          'mplete\n        pass\n'
+        else:
+            result += "# method name is invalid\n"
         return result
 
     def add_relationships(self, class_item, result):
