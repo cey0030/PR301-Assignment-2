@@ -18,6 +18,10 @@ class PrintClass:
 
         result = self.add_relationships(class_item, result)
 
+        result = self.add_methods(class_item, result)
+        return result
+
+    def add_methods(self, class_item, result):
         for listItem in self.get_methods(class_item):
             if Validator.validate_method_name(listItem):
                 result += '\n'
