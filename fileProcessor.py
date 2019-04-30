@@ -53,13 +53,17 @@ class FileProcessor:
         if len(a_relationship.split(" ")) == 3:
             a_r = self.handle_normal_relationship(a_r, a_relationship, name)
         else:
-            if '"1" *-- "many"' in a_relationship:
-                self.compo_1_to_many.append(name)
-                a_r = "        # self. my_" + name.lower() + ": list" + " -> "\
-                      + name + "\n" + "        self." + name.lower() + " = "\
-                      + "None\n"
-            elif '"1" o-- "many"' in a_relationship:
-                self.aggr_1_to_many.append(name)
+            a_r = self.handle_one_to_many_relationship(a_r, a_relationship, name)
+        return a_r
+
+    def handle_one_to_many_relationship(self, a_r, a_relationship, name):
+        if '"1" *-- "many"' in a_relationship:
+            self.compo_1_to_many.append(name)
+            a_r = "        # self. my_" + name.lower() + ": list" + " -> " \
+                  + name + "\n" + "        self." + name.lower() + " = " \
+                  + "None\n"
+        elif '"1" o-- "many"' in a_relationship:
+            self.aggr_1_to_many.append(name)
         return a_r
 
     def handle_normal_relationship(self, a_r, a_relationship, name):
