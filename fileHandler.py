@@ -34,16 +34,20 @@ class PrintClass:
 
     def add_attributes(self, class_item, result):
         for listItem in self.get_attributes(class_item):
-            try:
-                if Validator.validate_attribute_name(listItem):
-                    result += '        self.' + \
-                              listItem + ' = ' + listItem + '\n'
-                else:
-                    raise NameError('Invalid name: ' + listItem)
-            except NameError as e:
-                print(e)
+            result = self.check_attributes(listItem, result)
         if len(self.get_attributes(class_item)) == 0:
             result += "        pass\n"
+        return result
+
+    def check_attributes(self, listItem, result):
+        try:
+            if Validator.validate_attribute_name(listItem):
+                result += '        self.' + \
+                          listItem + ' = ' + listItem + '\n'
+            else:
+                raise NameError('Invalid name: ' + listItem)
+        except NameError as e:
+            print(e)
         return result
 
     def add_class_names(self, class_item):
