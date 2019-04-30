@@ -14,18 +14,7 @@ class PrintClass:
     def output_class(self, class_item):
         result = self.add_class_names(class_item)
 
-        for listItem in self.get_attributes(class_item):
-            try:
-                if Validator.validate_attribute_name(listItem):
-                    result += '        self.' + \
-                              listItem + ' = ' + listItem + '\n'
-                else:
-                    raise NameError('Invalid name: ' + listItem)
-            except NameError as e:
-                print(e)
-
-        if len(self.get_attributes(class_item)) == 0:
-            result += "        pass\n"
+        result = self.add_attributes(class_item, result)
 
         for list_item in self.get_relationship(self.get_class_name(class_item)):
             result += list_item
@@ -37,6 +26,20 @@ class PrintClass:
                                               'mplete\n        pass\n'
             else:
                 result += "# method name is invalid\n"
+        return result
+
+    def add_attributes(self, class_item, result):
+        for listItem in self.get_attributes(class_item):
+            try:
+                if Validator.validate_attribute_name(listItem):
+                    result += '        self.' + \
+                              listItem + ' = ' + listItem + '\n'
+                else:
+                    raise NameError('Invalid name: ' + listItem)
+            except NameError as e:
+                print(e)
+        if len(self.get_attributes(class_item)) == 0:
+            result += "        pass\n"
         return result
 
     def add_class_names(self, class_item):
