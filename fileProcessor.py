@@ -67,14 +67,9 @@ class FileProcessor:
         return a_r
 
     def handle_normal_relationship(self, a_r, a_relationship, name):
-        if "*--" in a_relationship:
-            a_r = self.add_composition(a_r, name)
-        elif "o--" in a_relationship:
-            self.aggr_1_to_1.append(name)
-        elif "<--" in a_relationship:
-            self.association_list.append(name)
-        elif "<.." in a_relationship:
-            self.dependency_list.append(name)
+        tokenDict = {"*--": self.add_composition(a_r, name), "o--": self.aggr_1_to_1.append(name), "<--": self.association_list.append(name), "<..": self.dependency_list.append(name)}
+        if a_relationship in tokenDict:
+            tokenDict[a_relationship]()
         return a_r
 
     def add_composition(self, a_r, name):
