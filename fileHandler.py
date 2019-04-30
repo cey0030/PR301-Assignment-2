@@ -12,16 +12,7 @@ class PrintClass:
         self.class_name_list = self.fileProcessor.class_name_list
 
     def output_class(self, class_item):
-        self.class_name_list.append(self.get_class_name(class_item))
-        result = "class " + self.get_class_name(class_item) + ":\n    def __init__(self"
-
-        for listItem in self.get_attributes(class_item):
-            result += ', ' + listItem
-
-        result += '):\n'
-
-        if Validator.validate_class_name(self.get_class_name(class_item)):
-            pass
+        result = self.add_class_names(class_item)
 
         for listItem in self.get_attributes(class_item):
             try:
@@ -46,6 +37,16 @@ class PrintClass:
                                               'mplete\n        pass\n'
             else:
                 result += "# method name is invalid\n"
+        return result
+
+    def add_class_names(self, class_item):
+        self.class_name_list.append(self.get_class_name(class_item))
+        result = "class " + self.get_class_name(class_item) + ":\n    def __init__(self"
+        for listItem in self.get_attributes(class_item):
+            result += ', ' + listItem
+        result += '):\n'
+        if Validator.validate_class_name(self.get_class_name(class_item)):
+            pass
         return result
 
     def output_classes(self, file_dir):
