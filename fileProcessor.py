@@ -68,15 +68,19 @@ class FileProcessor:
 
     def handle_normal_relationship(self, a_r, a_relationship, name):
         if "*--" in a_relationship:
-            self.compo_1_to_1.append(name)
-            a_r += "        # self. my_" + name.lower() + " -> " + name \
-                   + "\n" + "        self." + name.lower() + " = " + "None \n"
+            a_r = self.add_composition(a_r, name)
         elif "o--" in a_relationship:
             self.aggr_1_to_1.append(name)
         elif "<--" in a_relationship:
             self.association_list.append(name)
         elif "<.." in a_relationship:
             self.dependency_list.append(name)
+        return a_r
+
+    def add_composition(self, a_r, name):
+        self.compo_1_to_1.append(name)
+        a_r += "        # self. my_" + name.lower() + " -> " + name \
+               + "\n" + "        self." + name.lower() + " = " + "None \n"
         return a_r
 
     def get_all_num(self):
