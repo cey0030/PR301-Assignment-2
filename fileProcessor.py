@@ -32,7 +32,7 @@ class FileProcessor:
         methods = []
         for listItem in class_array:
             if "(" in listItem:
-                methods.append(listItem[:listItem.index("\n")-2].strip())
+                methods.append(listItem[:listItem.index("\n") - 2].strip())
         num_method = len(methods)
         self.num_all_method_list.append(num_method)
         return methods
@@ -53,7 +53,8 @@ class FileProcessor:
         if len(a_relationship.split(" ")) == 3:
             a_r = self.handle_normal_relationship(a_r, a_relationship, name)
         else:
-            a_r = self.handle_one_to_many_relationship(a_r, a_relationship, name)
+            a_r = self.handle_one_to_many_relationship(
+                a_r, a_relationship, name)
         return a_r
 
     def handle_one_to_many_relationship(self, a_r, a_relationship, name):
@@ -67,8 +68,11 @@ class FileProcessor:
         return a_r
 
     def handle_normal_relationship(self, a_r, a_relationship, name):
-        tokenDict = {"*--": self.add_composition(a_r, name), "o--": self.aggr_1_to_1.append(name),
-                     "<--": self.association_list.append(name), "<..": self.dependency_list.append(name)}
+        tokenDict = {"*--": self.add_composition(a_r,
+                                                 name),
+                     "o--": self.aggr_1_to_1.append(name),
+                     "<--": self.association_list.append(name),
+                     "<..": self.dependency_list.append(name)}
         if a_relationship in tokenDict:
             tokenDict[a_relationship]()
         return a_r
