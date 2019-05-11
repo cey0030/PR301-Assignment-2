@@ -6,7 +6,7 @@
 
 Note: From commit 2 (where the comment is in the repository) of the refactoring history of fileProcessor.py, ignore this and all future commits made after this one on fileProcessor.py. These are incorrect due to the mistake discussed last Friday. 
 
-Name: Large Class
+#### Name: Large Class
 
 Location:
 PR301-Assignment-1-Version-1-fileHandler.py-PrintClass-between Line 6 and 184
@@ -27,7 +27,7 @@ Move method, move attribute, replace class with multiple classes via composition
 4.	If a class needs to use methods/attributes from another class, I will declare an object of the class with the desired methods/attributes in the class which needs to use the methods and then use that object to access its methods/attributes. This is important for ensuring that the external behaviour of fileHandler does not change. 
 5.	I will continue until each class has its own appropriate methods and attributes, and the responsibility of the original class is split between these three classes. 
 
-Name: Long Method
+#### Name: Long Method
 
 Location: 
 PR301-Assignment-1-Version-1-fileHandler.py-PrintClass-output_class-between Line 128 and 167 
@@ -58,7 +58,7 @@ d.	Test the code to ensure it is still working correctly.
 e.	Repeat until all levels of nested functionality are removed (and thus the bad smell will then be totally gone). 
 Switch Statements
 
-Name: Switch statements
+#### Name: Switch statements
 
 Location: 
 PR301-Assignment-1-Version-1-command.py-Command-do_display-between Line 45 and 50
