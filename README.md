@@ -2,7 +2,7 @@
 
 ## Bad Smell documentation
 
-# Smell detection
+### Smell detection
 
 Note: From commit 2 (where the comment is in the repository) of the refactoring history of fileProcessor.py, ignore this and all future commits made after this one on fileProcessor.py. These are incorrect due to the mistake discussed last Friday. 
 
@@ -82,7 +82,7 @@ Steps:
 1.	I will create a python dictionary with the appropriate name and use it to store the keys corresponding to the options in the repeated if statements and the values corresponding to the lines of code to be run for each option value.
 2.	Then, I will rewrite the code such that it checks the input option against the keys of the dictionary created in the previous step, if it matches one, then its corresponding value which is a method will then be run, if not then it will not be run. 
 
-# Refactoring
+### Refactoring
 
 Identification of worst smell(s)
 
