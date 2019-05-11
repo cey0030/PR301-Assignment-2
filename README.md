@@ -1,6 +1,6 @@
 # PR301-Assignment-2
 
-# Bad Smell documentation
+## Bad Smell documentation
 
 # Smell detection
 
