@@ -86,7 +86,7 @@ Steps:
 
 #### Identification of worst smell(s)
 
-The worst bad smell is Large Class. It is the worst smell because the total amount of code this bad smell affects (178 lines) is the most compared to the other bad smells found. Documented in the table below is a summary of the number of lines of code in total affected by each bad smell, arranged in descending order which helped guide my decision on which bad smell was the worst. The worst bad smell was removed first, followed by the second worst, and the third worst. Any bad smells introduced by refactoring, if having a longer number of lines than the next worst bad smell I wanted to refactor, will be refactored before that and become the current worst bad smell. 
+The worst bad smell is Large Class. It is the worst smell because the total amount of code this bad smell affects (178 lines) is the most compared to the other bad smells found. Documented in the table below is a summary of the number of lines of code in total affected by each bad smell, arranged in descending order which helped guide my decision on which bad smell was the worst. The worst bad smell was removed first, followed by the second worst, and the third worst. 
 
 #### Effectiveness Evaluations
 
