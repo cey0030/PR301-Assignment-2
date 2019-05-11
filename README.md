@@ -1,7 +1,9 @@
 # PR301-Assignment-2
 
 Bad Smell documentation
+
 Smell detection
+
 Note: From commit 2 (where the comment is in the repository) of the refactoring history of fileProcessor.py, ignore this and all future commits made after this one on fileProcessor.py. These are incorrect due to the mistake discussed last Friday. 
 Name: Large Class
 Location:
@@ -18,6 +20,7 @@ Move method, move attribute, replace class with multiple classes via composition
 3.	I will execute move method for each method that is moved to the two other classes. I will do so one method by one method, and not shift more than one method at the same time and test after each move, to ensure that my tests still pass, and the code wasn’t broken by the move method. Each time I want to commit to the repository I test the code first to ensure it is working.
 4.	If a class needs to use methods/attributes from another class, I will declare an object of the class with the desired methods/attributes in the class which needs to use the methods and then use that object to access its methods/attributes. This is important for ensuring that the external behaviour of fileHandler does not change. 
 5.	I will continue until each class has its own appropriate methods and attributes, and the responsibility of the original class is split between these three classes. 
+
 Name: Long Method
 Location: 
 PR301-Assignment-1-Version-1-fileHandler.py-PrintClass-output_class-between Line 128 and 167 
@@ -40,6 +43,7 @@ c.	Extract the smaller code group inside the new method created by previously ex
 d.	Test the code to ensure it is still working correctly. 
 e.	Repeat until all levels of nested functionality are removed (and thus the bad smell will then be totally gone). 
 Switch Statements
+
 Name: Switch statements
 Location: 
 PR301-Assignment-1-Version-1-command.py-Command-do_display -between Line 45 and 50
@@ -56,12 +60,19 @@ I will replace the if statements with a dictionary and a single if statement, to
 Steps:
 1.	I will create a python dictionary with the appropriate name and use it to store the keys corresponding to the options in the repeated if statements and the values corresponding to the lines of code to be run for each option value.
 2.	Then, I will rewrite the code such that it checks the input option against the keys of the dictionary created in the previous step, if it matches one, then its corresponding value which is a method will then be run, if not then it will not be run. 
+
 Refactoring
 Identification of worst smell(s)
-The worst bad smell is Large Class. It is the worst smell because the total amount of code this bad smell affects (178 lines) is the most compared to the other bad smells found. Documented in the table below is a summary of the number of lines of code in total affected by each bad smell, arranged in descending order which helped guide my decision on which bad smell was the worst. The worst bad smell was removed first, followed by the second worst, and the third worst. Any bad smells introduced by refactoring, if having a longer number of lines than the next worst bad smell I wanted to refactor, will be refactored before that and become the current worst bad smell. Effectiveness Evaluations
-Long Method
+
+The worst bad smell is Large Class. It is the worst smell because the total amount of code this bad smell affects (178 lines) is the most compared to the other bad smells found. Documented in the table below is a summary of the number of lines of code in total affected by each bad smell, arranged in descending order which helped guide my decision on which bad smell was the worst. The worst bad smell was removed first, followed by the second worst, and the third worst. Any bad smells introduced by refactoring, if having a longer number of lines than the next worst bad smell I wanted to refactor, will be refactored before that and become the current worst bad smell. 
+
+Effectiveness Evaluations
+
+Large Class
 The bad smell was removed, and now the classes each have their own purpose, and deal with one group of functions each correctly. It is also easier to understand and read the code now. Therefore, we can conclude that the bad smell has successfully been removed. However, I did bring a new bad smell, inappropriate intimacy into the program since the new methods in fileHandler which need to be there since the external behaviour of fileHandler cannot change use the methods of the other two classes, but since this only amounts to 16 lines of code, which is fewer lines than the next worst bad smell has (39 lines), I will be refactoring the next worst bad smell which is long method instead of this one. The software quality has now improved significantly via the removal of much complication and confusion by having each class do its separate group of functions. 
 Long Method
+
 The bad smell was indeed removed, and responsibilities of the output_class method were distributed to the appropriately named methods. It is now clearer and easier to understand, and therefore code quality has improved, since work is split between these methods so that output_class does not have to do all the work the other methods are doing itself. By doing so, I have increased readability and its now easier to add functional code. Also, the parts of output_class which included exception handling and validation of class names, attribute names, and method names have not been shifted to their own methods, so as not to confuse the purpose of output_class. These exception handling and validating methods are now called by the handler for each aspect of the output_class method, (i.e. add_class_names, add_methods, add_attributes) as they should be, since these methods should handle classes, methods, and attributes and therefore it is their responsibility to check the validity of what they are handling. No foreseeable bad smells were added by refactoring this, so I deem the refactoring process successful. Therefore, I then refactored the next worst bad smell, which was switch statements.  
+
 Switch Statements
 The bad smell has been removed. The dictionary helped to eliminate the inner repetition of if bad smell, and makes the code easier to read and understand, as well as slightly shorter. Therefore, the code is now easier to read. No new noticeable bad smells have been introduced by this refactoring. The quality of the code has improved because it is now more modular and able to be customized, understood and read more easily. 
