@@ -61,7 +61,7 @@ Switch Statements
 Name: Switch statements
 
 Location: 
-PR301-Assignment-1-Version-1-command.py-Command-do_display -between Line 45 and 50
+PR301-Assignment-1-Version-1-command.py-Command-do_display-between Line 45 and 50
 
 Reasons:
 
@@ -100,4 +100,4 @@ The bad smell was indeed removed, and responsibilities of the output_class metho
 
 Switch Statements
 
-The bad smell has been removed. The dictionary helped to eliminate the inner repetition of if bad smell, and makes the code easier to read and understand, as well as slightly shorter. Therefore, the code is now easier to read. No new noticeable bad smells have been introduced by this refactoring. The quality of the code has improved because it is now more modular and able to be customized, understood and read more easily. 
+The bad smell has been removed. The dictionary helped to eliminate the repetition of if bad smell, and makes the code easier to read and understand, as well as slightly shorter. Therefore, the code is now easier to read. No new noticeable bad smells have been introduced by this refactoring. The quality of the code has improved because it is now more modular and able to be customized, understood and read more easily. 
