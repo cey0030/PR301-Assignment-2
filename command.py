@@ -41,6 +41,10 @@ class Command(Cmd):
                        /l: display line graph
         :return: none
         """
+        tokendict = {
+            "/a": self.controller.create_bar_chart,
+            "/p": self.controller.create_pie_chart,
+            "/l": self.controller.create_line_chart}
         if option and option.strip():
             if option == "/a":
                 self.controller.create_bar_chart()
