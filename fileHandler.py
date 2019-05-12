@@ -4,10 +4,9 @@ from FileInput import FileInput
 
 
 class PrintClass:
-    fileInput = FileInput()
-    fileProcessor = FileProcessor()
-
     def __init__(self):
+        self.fileProcessor = FileProcessor()
+        self.fileInput = FileInput(self.fileProcessor)
         self.class_list = self.fileInput.class_list
         self.class_name_list = self.fileProcessor.class_name_list
 
@@ -26,10 +25,10 @@ class PrintClass:
             result = self.check_methods(listItem, result)
         return result
 
-    def check_methods(self, listItem, result):
-        if Validator.validate_method_name(listItem):
+    def check_methods(self, listitem, result):
+        if Validator.validate_method_name(listitem):
             result += '\n'
-            result += 'def ' + listItem + '(self):\n     # Todo: inco' \
+            result += 'def ' + listitem + '(self):\n     # Todo: inco' \
                                           'mplete\n        pass\n'
         else:
             result += "# method name is invalid\n"
@@ -48,13 +47,13 @@ class PrintClass:
             result += "        pass\n"
         return result
 
-    def check_attributes(self, listItem, result):
+    def check_attributes(self, listitem, result):
         try:
-            if Validator.validate_attribute_name(listItem):
+            if Validator.validate_attribute_name(listitem):
                 result += '        self.' + \
-                          listItem + ' = ' + listItem + '\n'
+                          listitem + ' = ' + listitem + '\n'
             else:
-                raise NameError('Invalid name: ' + listItem)
+                raise NameError('Invalid name: ' + listitem)
         except NameError as e:
             print(e)
         return result
@@ -70,8 +69,8 @@ class PrintClass:
         return result
 
     def check_class_names(self, class_item):
-        if Validator.validate_class_name(self.get_class_name(class_item)):
-            pass
+        if not Validator.validate_class_name(self.get_class_name(class_item)):
+            print("Invalid class name: " + self.get_class_name(class_item))
 
     def output_classes(self, file_dir):
         files = []

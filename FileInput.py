@@ -1,14 +1,12 @@
-from fileProcessor import FileProcessor
 import os
 import docx
 
 
 class FileInput:
-    fileProcessor = FileProcessor()
 
-    def __init__(self):
+    def __init__(self, fileprocessor):
         self.class_list = []
-        self.relationship_list = self.fileProcessor.relationship_list = []
+        self.fileProcessor = fileprocessor
 
     def read_word_file(self, file_name):
         try:
@@ -48,6 +46,6 @@ class FileInput:
                     class_list.append([])
             else:
                 class_list[-1].append(m)
-        self.relationship_list = class_list[0]
+        self.fileProcessor.relationship_list = class_list[0]
         self.class_list = class_list[1:]
         return self.class_list

@@ -1,5 +1,5 @@
 @startuml
-ToyBox *-- Toy
+Zoo "1" o-- "many" Animal
 
 class ToyBox {
     name : String

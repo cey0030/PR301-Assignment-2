@@ -1,5 +1,5 @@
 @startuml
-Zoo "1" *-- "many" Animal
+Zoo "1" o-- "many" Animal
 
 class Zoo {
     name : String
@@ -14,3 +14,5 @@ class Animal {
     __str__()
 }
 @enduml
+
+
