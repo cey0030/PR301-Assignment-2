@@ -46,12 +46,8 @@ class Command(Cmd):
             "/p": self.controller.create_pie_chart,
             "/l": self.controller.create_line_chart}
         if option and option.strip():
-            if option == "/a":
-                self.controller.create_bar_chart()
-            elif option == "/p":
-                self.controller.create_pie_chart()
-            elif option == "/l":
-                self.controller.create_line_chart()
+            if option in tokendict:
+                tokendict[option]()
         else:
             print("please choose one or see help display")
 
