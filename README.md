@@ -4,7 +4,9 @@
 
 ### Smell detection
 
-Note: From commit 2 (where the comment is in the repository) of the refactoring history of fileProcessor.py, ignore this and all future commits made after this one on fileProcessor.py. These are incorrect due to the mistake discussed last Friday. 
+Notes: 
+1. From commit 2 (where the comment is in the repository) of the refactoring history of fileProcessor.py, ignore this and all future commits made after this one on fileProcessor.py. These are incorrect due to the mistake discussed last Friday. 
+2. The third bad smell refactoring is done under "patch-1" branch.
 
 #### Name: Large Class
 
